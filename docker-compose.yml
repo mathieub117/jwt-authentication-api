@@ -1,0 +1,29 @@
+version: '3.6'
+services:
+  mongodb:
+    image: mongo
+    hostname: mongo
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - ./data:/data/db
+    networks: 
+      - endpoint
+
+  login-server:
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks: 
+      - endpoint
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    environment:
+      WAIT_HOSTS: mongodb:27017
+volumes:
+  data-volume:
+networks:
+  endpoint:
+    driver: bridge
