@@ -37,5 +37,8 @@ typings
 # Optional REPL history
 .node_repl_history
 
+# Webstorm files
+.idea
+
 # Docker permanent data. You usually don't want to share this
 data

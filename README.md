@@ -10,7 +10,7 @@ It Uses the official node:latest and mongo:latest to create an image with 2 cont
 
 ## Test routes with curl (Use Git bash / Cygwin on windows)
 ### Signup
-```curl -g -X POST http://localhost:3000/signup -H "Content-Type: application/json" -d '{"email":"example@example.com", "password":"password"}'```
+```curl -g -X POST http://localhost:3000/signup -H "Origin: http://localhost:5000" -H "Content-Type: application/json" -d '{"email":"example@example.com", "password":"password"}'```
 
 ### Login
 ```curl -g -X POST http://localhost:3000/login -H "Content-Type: application/json" -d '{"email":"example@example.com", "password":"password"}'```
