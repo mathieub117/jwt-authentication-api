@@ -16,8 +16,14 @@ passport.use(
           const user = await UserModel.create({ email, password });
   
           return done(null, user);
-        } catch (error) {
-          done(error);
+        } 
+        catch (error) {
+          // User already exist
+          if(error.code = 11000) {
+            done("User already exist")
+          } else {
+            done(error)
+          }
         }
       }
     )
@@ -35,13 +41,13 @@ passport.use(
           const user = await UserModel.findOne({ email });
   
           if (!user) {
-            return done(null, false, { message: 'User not found' });
+            return done('User not found');
           }
   
           const validate = await user.isValidPassword(password);
   
           if (!validate) {
-            return done(null, false, { message: 'Wrong Password' });
+            return done('Wrong Password');
           }
   
           return done(null, user, { message: 'Logged in Successfully' });
