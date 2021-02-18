@@ -42,3 +42,6 @@ typings
 
 # Docker permanent data. You usually don't want to share this
 data
+
+# Private data, such as email and password
+.env
