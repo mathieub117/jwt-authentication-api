@@ -16,7 +16,7 @@ function EmailTemplate(values) {
             subject: `Confirm your email`,
             welcome: `Welcome ${values.email}!`,
             welcomeSimple: `Confirm the email`,
-            infoText: `Click the link above to confirm that you created this account. If you didn't create an account, ignore this message.`,
+            infoText: `Click the link below to confirm that you created this account. If you didn't create an account, ignore this message.`,
             footerMessage: `This was sent automatically`
         }
     } else if (values.lang === "fr") {
@@ -25,7 +25,7 @@ function EmailTemplate(values) {
             subject: `Confirmer votre email`,
             welcome: `Bonjour ${values.email}!`,
             welcomeSimple: `Confirmer le email`,
-            infoText: `Appuyez sur le lien ci-dessus pour confirmer que vous avez créé ce compte. Si vous n'avez pas créé de compte, ignorez ce message`,
+            infoText: `Appuyez sur le lien ci-dessous pour confirmer que vous avez créé ce compte. Si vous n'avez pas créé de compte, ignorez ce message`,
             footerMessage: `Envoyé automatiquement`
         }
     }
@@ -1403,13 +1403,17 @@ function EmailTemplate(values) {
                                                             <tr>
                                                                 <th>
                                                                     <b>
-                                                                        <h5>
-                                                                            <a href="${utilityService.ServerURL}${values.confirmUrl}" style="background-color:#f7931d;border:0px solid #f7931d;border-radius:3px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:16px;font-weight:bold;line-height:35px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;">${values.welcomeSimple}</a>
-                                                                        </h5>
+                                                                        <h5>${values.welcomeSimple}</h5>
                                                                     </b>
                                                                     <p>${values.infoText}</p>
                                                                     <br>
                                                                     <div class="button">
+                                                                    <!--[if mso]>
+                                                                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${utilityService.ServerURL}${values.confirmUrl}" style="height:45px;v-text-anchor:middle;width:180px;" stroke="f" fillcolor="#f5774e">
+                                                                        <w:anchorlock/>
+                                                                        <center>
+                                                                    <![endif]-->
+                                                                        <a href="${utilityService.ServerURL}${values.confirmUrl}" style="background-color:#f7931d;border:0px solid #f7931d;border-radius:3px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:16px;font-weight:bold;line-height:35px;text-align:center;text-decoration:none;width:150px;">Confirm</a>
                                                                     </div>
                                                                 </th>
                                                                 <th class="expander"></th>
