@@ -32,9 +32,9 @@ app.use('/', passport.authenticate('jwt', {session: false}), validateTokenRoute)
 
 
 /// ************************ Handle errors ************************
-app.use((err, req, res) => {
-    console.log(err)
-    res.status(err.status || 500).send({success: false, error: err});
+app.use((err, req, res, next) => {
+    console.log(`Express caught a next(error): ${err}`);
+    return res.status(err.status || 500).send({success: false, error: err});
 });
 
 

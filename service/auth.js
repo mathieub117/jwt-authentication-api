@@ -10,19 +10,25 @@ passport.use(
     new localStrategy(
         {
             usernameField: 'email',
-            passwordField: 'password'
+            passwordField: 'password',
+            passReqToCallback: true,
+            session: false
         },
-        async (email, password, done) => {
+        async (req, email, password, done) => {
             try {
                 const user = await UserModel.create({email, password});
-                emailService.SendMail({to: email, html: emailService.EmailTemplate({email: email, confirmUrl: `/user/confirm?code=${user._id}`})})
+                const lang = req.query.lang ?? "en";
+                const subject = lang === "en" ? "Confirm your email" : "Confirmer votre email";
+
+                emailService.SendMail({subject: subject, to: email, html: emailService.EmailTemplate({email: email, confirmUrl: `/user/confirm?code=${user._id}`, lang: lang})})
+
                 return done(null, user);
             } catch (error) {
                 // User already exist
                 if (error.code === 11000) {
-                    done("User already exist")
+                    return done('User already exist');
                 } else {
-                    done(error)
+                    return done(error)
                 }
             }
         }
