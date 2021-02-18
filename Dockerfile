@@ -1,4 +1,9 @@
 FROM node:latest
+
+## Where images will be stored
+RUN mkdir -p /uploads
+
+## Copy project and install its dependency directly in the docker
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY package.json /usr/src/app/

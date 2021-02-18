@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const userService = require('../service/user');
 
 const router = express.Router();
 
@@ -46,5 +47,17 @@ router.post(
         )(req, res, next);
     }
 );
+
+router.get('/confirm', async (req, res) => {
+        userService.Find({_id: req.params.code}).then((userResult) => {
+        if (userResult.success) {
+            userResult.user.active = true;
+            userResult.user.save()
+            return res.status(200).send({success: true});
+        } else {
+            return res.status(409).send(userResult);
+        }
+    });
+});
 
 module.exports = router;
