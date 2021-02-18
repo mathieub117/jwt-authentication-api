@@ -4,7 +4,6 @@ const UserModel = require('../model/user');
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 const emailService = require('../service/email') // Send email at signup
-const utilityService = require('../service/utility')
 
 passport.use(
     'signup',
@@ -16,7 +15,7 @@ passport.use(
         async (email, password, done) => {
             try {
                 const user = await UserModel.create({email, password});
-                emailService.SendMail({to: email, html: `<h3>confirm your account:</h3><h4><a href="${utilityService.ServerURL}/user/confirm?code=${user._id}"</h4>`})
+                emailService.SendMail({to: email, html: emailService.EmailTemplate({email: email, confirmUrl: `/user/confirm?code=${user._id}`})})
                 return done(null, user);
             } catch (error) {
                 // User already exist

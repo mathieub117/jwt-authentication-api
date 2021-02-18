@@ -8,6 +8,18 @@ It Uses the official node:latest and mongo:latest to create an image with 2 cont
 ```cd ./login_server```
 ```docker-compose up --build --remove-orphans```
 
+## Add .env file
+You will need to add an .env file that contains the following:
+```
+MONGO_URL=mongodb://mongodb:27017/data
+SCHEME=http://
+PORT=3000
+CLIENT_DOMAIN=192.168.2.7:5000
+MAIL_NAME=.
+MAIL_PASSWORD=.
+```
+Replace domain and mail values accordingly
+
 ## Test routes with curl (Use Git bash / Cygwin on windows)
 ### Signup
 ```curl -g -X POST http://localhost:3000/user/signup -H "Origin: http://localhost:5000" -H "Content-Type: application/json" -d '{"email":"example@example.com", "password":"password"}'```
