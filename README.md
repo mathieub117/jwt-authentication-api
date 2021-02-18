@@ -5,7 +5,9 @@ Based from https://www.digitalocean.com/community/tutorials/api-authentication-w
 
 ## Run with docker
 It Uses the official node:latest and mongo:latest to create an image with 2 containers
+
 ```cd ./login_server```
+
 ```docker-compose up --build --remove-orphans```
 
 ## Add .env file
