@@ -27,13 +27,13 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Pre-hook to encrypt password so non-human readable in DB
-UserSchema.pre(
+/*UserSchema.pre(
     'save',
     async function (next) {
         this.password = await bcrypt.hash(this.password, 10);
         next();
     }
-);
+);*/
 
 // Compare a password and tell if it match
 UserSchema.methods.isValidPassword = async function (password) {

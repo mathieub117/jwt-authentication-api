@@ -37,7 +37,7 @@ router.post(
 );
 
 router.get('/confirm', async (req, res, next) => {
-        userService.Find({_id: req.params.code}).then((userResult) => {
+        userService.Find({_id: req.query.code}).then((userResult) => {
         if (userResult.success) {
             userResult.user.active = true;
             userResult.user.save()

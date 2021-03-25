@@ -1,5 +1,6 @@
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt'); // Encrypt password
 const UserModel = require('../model/user');
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
@@ -16,6 +17,8 @@ passport.use(
         },
         async (req, email, password, done) => {
             try {
+                // Encrypt password once
+                password = await bcrypt.hash(password, 10);
                 const user = await UserModel.create({email, password});
                 const lang = req.query.lang ?? "en";
                 const subject = lang === "en" ? "Confirm your email" : "Confirmer votre email";

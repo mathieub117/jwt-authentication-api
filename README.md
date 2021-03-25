@@ -16,7 +16,7 @@ You will need to add an .env file that contains the following:
 MONGO_URL=mongodb://mongodb:27017/data
 SCHEME=http://
 PORT=3000
-CLIENT_DOMAIN=192.168.2.7:5000
+CLIENT_DOMAIN=localhost
 MAIL_NAME=.
 MAIL_PASSWORD=.
 ```

@@ -1407,14 +1407,7 @@ function EmailTemplate(values) {
                                                                     </b>
                                                                     <p>${values.infoText}</p>
                                                                     <br>
-                                                                    <div class="button">
-                                                                    <!--[if mso]>
-                                                                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${utilityService.ServerURL}${values.confirmUrl}" style="height:45px;v-text-anchor:middle;width:180px;" stroke="f" fillcolor="#f5774e">
-                                                                        <w:anchorlock/>
-                                                                        <center>
-                                                                    <![endif]-->
-                                                                        <a href="${utilityService.ServerURL}${values.confirmUrl}" style="background-color:#f7931d;border:0px solid #f7931d;border-radius:3px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:16px;font-weight:bold;line-height:35px;text-align:center;text-decoration:none;width:150px;">Confirm</a>
-                                                                    </div>
+                                                                    <a href="${utilityService.ServerURL}${values.confirmUrl}">Confirm</a>
                                                                 </th>
                                                                 <th class="expander"></th>
                                                             </tr>
