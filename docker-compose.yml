@@ -11,9 +11,10 @@ services:
       - endpoint
 
   login-server:
+    image: c5dczjq8fyibummbmjzs/jwt-authentication-api-server
     build: .
     ports:
-      - "127.0.0.1:3000:3000"
+      - "3000:3000"
       - "587:587"
     networks: 
       - endpoint
